@@ -1,28 +1,152 @@
 <html>
 
 <head>
-	<title>Pixi Hotwire</title>
+	<title>Harmonic Presence</title>
 
 	<meta id="viewport" name="viewport"
 		content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no, viewport-fit=cover" />
 	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link
+		href="https://fonts.googleapis.com/css2?family=Mukta:wght@200;300;400;500;600;700;800&family=Secular+One&display=swap"
+		rel="stylesheet">
 
 	<style>
+		* {
+			box-sizing: border-box;
+		}
+
 		html,
 		body {
 			margin: 0;
 			padding: 0;
+			width: 100%;
 			height: 100%;
 			overflow: hidden;
+			background-color: #7eb6d9;
+			font-family: 'Mukta', sans-serif;
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
 
-		#pixi-content {
-			background: #fb8b24;
-			width: 100vw;
-			height: 100vh;
-			display: flex;
-			justify-content: center;
+		.container {
+			max-height: 100vh;
 			align-items: center;
+		}
+
+		.left-side {
+			position: absolute;
+			z-index: 1;
+			left: 20%;
+			bottom: 10%;
+		}
+
+		.right-side {
+			position: absolute;
+			z-index: 1;
+			right: 20%;
+			bottom: 10%;
+		}
+
+		#back,
+		.ten,
+		#next {
+			justify-self: center;
+			align-self: center;
+			font-family: 'Secular One', sans-serif;
+		}
+
+		#back {
+			position: absolute;
+			z-index: 1;
+			left: 5%;
+			bottom: 50px;
+			text-align: left;
+		}
+
+		.pres {
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 0;
+		}
+
+		#next {
+			position: absolute;
+			z-index: 1;
+			right: 5%;
+			bottom: 50px;
+			text-align: right;
+		}
+
+		p {
+			margin: 10px;
+			padding: 20px;
+			font-size: 16px;
+			background-color: #7EB6D9;
+			/* border: 2px solid #ADE0FF; */
+			max-width: 400px;
+			width: 25%;
+			box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.507);
+		}
+
+		button {
+			display: block;
+			width: 100px;
+			height: 40px;
+			background-color: #ADE0FF;
+			border: none;
+			box-shadow: none;
+			transition: box-shadow 0.3s linear;
+			margin: 0.5em;
+			cursor: pointer;
+			font-size: 1.2em;
+		}
+
+		button:hover {
+			box-shadow: 0px 0px 0px 5px #ADE0FF;
+		}
+
+		#next:active,
+		#back:active {
+			box-shadow: 0px 0px 0px 5px #5a829b;
+			background-color: #5a829b;
+		}
+
+		canvas {
+			border-radius: 1em;
+			width: 100%;
+			height: 800px;
+		}
+
+		@media (max-width: 1300px) {
+			p {
+				max-width: 280px;
+				width: 40%;
+				margin: 0;
+			}
+
+			.left-side {
+				left: 20%;
+			}
+
+			.right-side {
+				right: 20%;
+			}
+		}
+
+		@media (max-width: 900px) {
+			.left-side {
+				left: 30px;
+				bottom: 150px;
+			}
+
+			.right-side {
+				right: 30px;
+				bottom: 150px;
+			}
 		}
 	</style>
 
@@ -30,7 +154,71 @@
 
 <body>
 	<noscript>Please enable JavaScript in your web browser to view this page.</noscript>
-	<div id="pixi-content"><canvas id="pixi-canvas" /></div>
+	<div class='container'>
+		<!-- titleScene -->
+		<p class='left-side' data-key='1'>
+			Welcome to Harmonic Presence! In this interactive presentation, you will learn about the existence of
+			harmonics in sound through audio and visual examples.
+		</p>
+		<p class='right-side' data-key='1'>
+			By the end of this presentation, you will be able to describe harmonics in math, physics, and musical terms,
+			and you will know how they contribute to beautiful sounds. Click Next to dive in.
+		</p>
+
+		<!-- basics -->
+		<p class='left-side' style='display: none' data-key='2'>
+			We can identify a sound by its pitch, or <b>frequency</b>. Most of the time, however, there are multiple sound
+			waves, with varying frequencies, that make up a sound. What we are really identifying is called the
+			<b>fundamental frequency</b>.
+		</p>
+		<p class='right-side' style='display: none' data-key='2'>
+			The <b>fundamental frequency</b> is the loudest of all of the frequencies, which is why we hear it the most.
+			All of the other quieter frequencies are called Harmonics.
+		</p>
+
+		<!-- harmonic sound example -->
+		<p class='left-side' style='display: none' data-key='3'>
+			A sound that doesn't have harmonics is a single sound wave, like a sine wave.
+			The robot represents a sine wave, since it is a synthetically created sound. Click on the robot to hear a sound
+			without harmonics.
+		</p>
+		<p class='right-side' style='display: none' data-key='3'>
+			The piano represents a note being played on a piano. Click on the piano to hear the piano note. The difference in
+			tone is because of the presence of harmonics!
+		</p>
+
+		<!-- frequencyBasics -->
+		<p class='left-side' style='display: none' data-key='4'>
+			Both notes you heard in the previous example have a frequency of 440 Hertz.
+		</p>
+		<p class='right-side' style='display: none' data-key='4'>
+			Let's go over what this means exactly.
+		</p>
+
+		<!-- frequencyBasics -->
+		<p class='left-side' style='display: none' data-key='5'>
+			Frequency represents the pitch of a sound wave, which corresponds to the number
+			of vibrations per second. It is measured in Hertz.
+		</p>
+		<p class='right-side' style='display: none' data-key='5'>
+			When we say that a note is 440 Hertz, that means that the sound wave vibrates 440 times
+			per second.
+		</p>
+
+
+
+
+
+
+
+
+
+		<button id='back'>Back</button>
+		<div class='pres' id="pixi-content">
+			<canvas id="pixi-canvas" />
+		</div>
+		<button id='next'>Next</button>
+	</div>
 </body>
 
 </html>
