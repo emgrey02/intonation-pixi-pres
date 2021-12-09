@@ -2,9 +2,9 @@ import { Scene } from "./Scene";
 import { sound } from "@pixi/sound";
 import { Sprite, Ticker, Text } from "pixi.js";
 import { Manager } from "../Manager";
-import { Basics } from "./Basics";
+import { First } from "./First";
 
-export class TitleScene extends Scene {
+export class Intro extends Scene {
   private title: Text;
   private flower: Sprite;
   private alphaChange: number = 0.001;
@@ -43,7 +43,7 @@ export class TitleScene extends Scene {
 
   override nextScreen() {
     sound.pause("intro-music");
-    Manager.changeScene(new Basics());
+    Manager.changeScene(new First());
   }
 
   override previousScreen() {

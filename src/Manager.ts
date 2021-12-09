@@ -1,5 +1,4 @@
 import { Application } from "pixi.js";
-
 import { Scene } from "./scenes/Scene";
 
 export class Manager {

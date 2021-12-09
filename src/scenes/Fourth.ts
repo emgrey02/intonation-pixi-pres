@@ -1,18 +1,16 @@
 import { Scene } from "./Scene";
 import { Sprite, Text } from "pixi.js";
 import { Manager } from "../Manager";
-import { SoundExample } from "./SoundExample";
-import { TitleScene } from "./TitleScene";
-import { sound } from "@pixi/sound";
+// import { sound } from "@pixi/sound";
 
-export class Basics extends Scene {
+export class Fourth extends Scene {
   private title: Text;
   private fundFreq: Sprite;
 
   constructor() {
     super();
 
-    this.title = new Text("Basics", Scene.getTextStyle());
+    this.title = new Text("Fundamental Frequency", Scene.getTextStyle());
     this.addChild(this.title);
     this.title.x = Manager.width / 2 - this.title.width / 2;
     this.title.y = Manager.height / 10;
@@ -27,11 +25,6 @@ export class Basics extends Scene {
   }
 
   override nextScreen() {
-    Manager.changeScene(new SoundExample());
-  }
-
-  override previousScreen() {
-    Manager.changeScene(new TitleScene());
-    sound.play("intro-music");
+    //Manager.changeScene(new FrequencyBasics());
   }
 }

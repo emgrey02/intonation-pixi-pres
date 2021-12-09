@@ -1,25 +1,23 @@
 import { Scene } from "./Scene";
 import { Sprite, Text } from "pixi.js";
 import { Manager } from "../Manager";
-import { SoundExample } from "./SoundExample";
-// import { FrequencyTwo } from "./FrequencyTwo";
+import { Second } from "./Second";
 
-export class FrequencyBasics extends Scene {
+export class First extends Scene {
   private title: Text;
   private soundWave: Sprite;
-  private count: number;
 
   constructor() {
     super();
 
-    this.count = 0;
-
-    this.title = new Text("Frequency Basics", Scene.getTextStyle());
+    this.title = new Text("Parts of a Wave", Scene.getTextStyle());
     this.addChild(this.title);
     this.title.x = Manager.width / 2 - this.title.width / 2;
     this.title.y = Manager.height / 10;
 
-    this.soundWave = Sprite.from("sound-wave");
+    this.soundWave = Sprite.from("sound wave");
+
+    this.soundWave.scale.set(1);
     this.soundWave.anchor.set(0.5);
     this.soundWave.x = Manager.width / 2;
     this.soundWave.y = Manager.height / 2;
@@ -27,15 +25,6 @@ export class FrequencyBasics extends Scene {
   }
 
   override nextScreen() {
-    if (this.count < 2) {
-      Manager.changeScene(new FrequencyBasics());
-      this.count++;
-    } else {
-      return;
-    }
-  }
-
-  override previousScreen() {
-    Manager.changeScene(new SoundExample());
+    Manager.changeScene(new Second());
   }
 }
