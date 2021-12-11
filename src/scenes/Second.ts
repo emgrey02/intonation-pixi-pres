@@ -14,15 +14,16 @@ export class Second extends Scene {
 
     this.title = new Text("Pitch", Scene.getTextStyle());
     this.addChild(this.title);
-    this.title.x = Manager.width / 2 - this.title.width / 2;
-    this.title.y = Manager.height / 10;
+    this.title.anchor.set(0.5);
+    this.title.x = Manager.width / 2;
+    this.title.y = 50;
 
     this.highFreq = Sprite.from("high wave");
     this.lowFreq = Sprite.from("low wave");
 
     this.lowFreq.anchor.set(0.5);
-    this.lowFreq.x = Manager.width - Manager.width / 3;
-    this.lowFreq.y = Manager.height / 2;
+    this.lowFreq.x = Manager.width / 2;
+    this.lowFreq.y = Manager.height / 2 + 50;
     this.lowFreq.scale.set(0.8);
     this.lowFreq.interactive = true;
 
@@ -46,8 +47,8 @@ export class Second extends Scene {
     });
 
     this.highFreq.anchor.set(0.5);
-    this.highFreq.x = Manager.width / 3;
-    this.highFreq.y = Manager.height / 2;
+    this.highFreq.x = Manager.width / 2;
+    this.highFreq.y = Manager.height / 3;
     this.highFreq.scale.set(0.8);
 
     this.highFreq.interactive = true;

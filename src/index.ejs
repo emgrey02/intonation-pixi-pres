@@ -24,7 +24,7 @@
 			width: 100%;
 			height: 100%;
 			overflow: hidden;
-			/* background-color: #7eb6d9; */
+			background-color: #7eb6d9;
 			font-family: 'Mukta', sans-serif;
 			display: flex;
 			align-items: center;
@@ -39,15 +39,15 @@
 		.left-side {
 			position: absolute;
 			z-index: 1;
-			left: 20%;
-			bottom: 10%;
+			left: 50px;
+			bottom: 40%;
 		}
 
 		.right-side {
 			position: absolute;
 			z-index: 1;
-			right: 20%;
-			bottom: 10%;
+			right: 50px;
+			bottom: 40%;
 		}
 
 		#back,
@@ -87,7 +87,7 @@
 			font-size: 16px;
 			background-color: #7EB6D9;
 			/* border: 2px solid #ADE0FF; */
-			max-width: 400px;
+			max-width: 300px;
 			width: 25%;
 			box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.507);
 		}
@@ -121,23 +121,25 @@
 			height: 800px;
 		}
 
-		@media (max-width: 1300px) {
+		@media (max-width: 1800px) {
 			p {
-				max-width: 280px;
+				max-width: 400px;
 				width: 40%;
 				margin: 0;
 			}
 
 			.left-side {
-				left: 20%;
+				left: 15%;
+				bottom: 50px;
 			}
 
 			.right-side {
-				right: 20%;
+				right: 15%;
+				bottom: 50px;
 			}
 		}
 
-		@media (max-width: 900px) {
+		@media (max-width: 1200px) {
 			.left-side {
 				left: 30px;
 				bottom: 150px;
@@ -155,7 +157,7 @@
 <body>
 	<noscript>Please enable JavaScript in your web browser to view this page.</noscript>
 	<div class='container'>
-		<!-- titleScene -->
+		<!-- intro -->
 		<p class='left-side' data-key='1'>
 			Welcome to Harmonic Presence! In this interactive presentation, you will learn about the existence of
 			harmonics in sound through audio and visual examples.
@@ -165,7 +167,7 @@
 			sounds you hear every day. Click Next to dive in.
 		</p>
 
-		<!-- basics -->
+		<!-- parts of a wave -->
 		<p class='left-side' style='display: none' data-key='2'>
 			In order to talk about harmonics, we need to know a little bit of physics, math, and music. But no need to be
 			intimidated – the basics of each is all we need. To start, let’s look at a single sound wave.
@@ -177,46 +179,129 @@
 			faster it oscillates, which means a higher frequency.
 		</p>
 
-		<!-- harmonic sound example -->
+		<!-- pitch -->
 		<p class='left-side' style='display: none' data-key='3'>
 			As you may know, frequency corresponds to the pitch of the sound. We measure it in Hertz. The higher the
 			frequency, the higher the pitch, and vice versa.
 		</p>
 		<p class='right-side' style='display: none' data-key='3'>
 			See if you can hear the difference between a sine wave with a higher frequency of 800 Hertz (think: quick
-			oscillations)versus a sine wave with a lower frequency of 100 Hertz (think: slow
+			oscillations) versus a sine wave with a lower frequency of 100 Hertz (think: slow
 			oscillations).
 		</p>
 
-		<!-- frequencyBasics -->
+		<!-- frequency-pitch relationship -->
 		<p class='left-side' style='display: none' data-key='4'>
-			Now let’s explore sound that is not just a single sine wave. Most sounds are actually made up of many sound waves,
-			with different frequencies, forming a composite sound that we hear.
+			The relationship between frequency and pitch is actually more complicated than that. As frequency increases, the
+			change in pitch gets smaller and smaller. That means a greater change of frequency is needed to hear the same
+			pitch difference. This relationship is logarithmic, as seen in the graph.
 		</p>
 		<p class='right-side' style='display: none' data-key='4'>
-			For example, a piano, like any non-synthetic instrument, produces sound that is made up of many sound waves. See
-			if you can hear a difference between a sine wave (represented by the robot) and a piano note (represented by the
-			grand piano).
+			An equal change in frequency does not represent an equal change in pitch. However, the <b>ratio</b> of the
+			frequencies is the same for an equal change in pitch.
 		</p>
 
-		<!-- frequencyBasics -->
+		<!-- frequency vs pitch -->
 		<p class='left-side' style='display: none' data-key='5'>
-			The sine wave and piano note may have sounded similar because both transmitted a sound with a pitch of 440 Hertz.
-			But how can we say the grand piano has one pitch, when we know that it emits more than one sound wave?
+			Click on any of the frequencies to hear the corresponding pitch. Notice that the first two pitches have a
+			difference of 50 Hertz, and the second two have a difference of 50 Hertz. However, the two lower pitches sound
+			farther away from each other than the two higher pitches.
 		</p>
 		<p class='right-side' style='display: none' data-key='5'>
-			It’s because the sound wave with a frequency of 440 Hertz that the piano emitted is the loudest and most prominent
-			sound wave out of all of them. It is also called the <b>fundamental frequency</b>.
+			To get the same pitch change between two notes, they must have the same frequency ratio. In this example, the
+			first two have frequency ratio of 450 / 400 = 1.125. The second two have a frequency ratio of 1050 / 1000 = 1.05,
+			proving that the pitches are closer together in higher frequencies.
 		</p>
 
+		<!-- notation -->
 		<p class='left-side' style='display: none' data-key='6'>
-			While these other sound waves don’t impact the main pitch we hear, they contribute to the tone or color of the
-			sound. They give the grand piano its unique sound as compared to other instruments.
+			In Western music tradition, they noticed this, took the frequency ratio of 2 to 1, and assigned the distance
+			between those pitches to be 1200 <b>cents</b>, or an interval called an octave. The creation of cents makes it
+			easy to divide an octave into 12 even intervals, each 100 cents apart, to create a series of evenly-spaced pitches
+			with associated note names.
 		</p>
 		<p class='right-side' style='display: none' data-key='6'>
-			Another name for these sound waves is harmonics. Harmonics are sound waves with frequencies that are integer
-			multiplies of the most prominent fundamental frequency. Let’s dissect that statement.
+			This is what those 12 notes look like written on paper. We won’t get into it too much, but a note has a letter
+			name, possibly a symbol, and a number to represent which octave the note is in. A4 is a special note, because
+			every note’s frequency is based on its distance from this note. Usually, it is 440 Hertz.
 		</p>
+
+		<!-- composite sound -->
+		<p class='left-side' style='display: none' data-key='7'>
+			Now, back to sound waves. Pitches are usually <b>composite</b> sound waves: a combination of many sound waves with
+			different frequencies.
+		</p>
+		<p class='right-side' style='display: none' data-key='7'>
+			For example, a piano produces a composite sound wave. See if you can hear a difference between a sine wave
+			(represented by the robot), and a piano note (represented by the grand piano), both playing an A4 at 440 Hertz.
+		</p>
+
+		<!-- fundamental frequency -->
+		<p class='left-side' style='display: none' data-key='8'>
+			You might be asking - how can we say the grand piano is playing one pitch, when we know that it emits a
+			combination of
+			frequencies?
+		</p>
+		<p class='right-side' style='display: none' data-key='8'>
+			The sound wave with a frequency of 440 Hertz is the loudest sound wave out of all of them. It is also called the
+			<b>fundamental frequency</b>. We identify a pitch by its fundamental frequency, since that is what we hear the
+			most.
+		</p>
+
+		<!-- intro to harmonics -->
+		<p class='left-side' style='display: none' data-key='9'>
+			While these other sound waves don’t impact the loudest pitch we hear, they contribute to the tone or color of the
+			sound. These extra sound waves are called Harmonics.
+		</p>
+		<p class='right-side' style='display: none' data-key='9'>
+			Harmonics are sound waves with frequencies that are integer multiplies of the fundamental frequency. Let’s dissect
+			what that means.
+		</p>
+
+		<!-- harmonics explained -->
+		<p class='left-side' style='display: none' data-key='10'>
+			An integer is any number without a decimal, and a multiple means the product: we must multiply the fundamental
+			frequency by any integer to get a harmonic frequency.
+		</p>
+		<p class='right-side' style='display: none' data-key='10'>
+			For example, 440 x 2 = 880, and 440 x 3 is 1,320. So, the second and third harmonics are 880 Hertz and 1,320
+			Hertz. If we continue for a while, we end up with a lot of different frequencies that make up the harmonic series.
+		</p>
+
+		<!-- harmonic series -->
+		<p class='left-side' style='display: none' data-key='11'>
+			The harmonic series is a sequence of all the possible harmonic frequencies. The way a note sounds is largely
+			affected by the strengths of each harmonic. Here is a decomposed sound wave that includes the first 32 harmonics
+			in the harmonic series. If your wondering what the pitches of the harmonic series sound like, click the figure.
+		</p>
+		<p class='right-side' style='display: none' data-key='11'>
+			When a note is played on the piano, it has a particular volume for each harmonic. When a guitar plays a note, it
+			has different volumes for each harmonic. Each instrument's unique combination of harmonic strengths gives them
+			their unique tone.
+		</p>
+
+		<!-- harmonic examples -->
+		<p class='left-side' style='display: none' data-key='12'>
+			Here are some examples of instruments, what they sound like, and the various combination of volumes for each
+			harmonic in the harmonic series.
+		</p>
+		<p class='right-side' style='display: none' data-key='12'>
+			Do you have a favorite sounding instrument? This might be because you have an affinity for certain frequencies in
+			the harmonic series, but who knows?
+		</p>
+
+		<!-- harmonic series notated -->
+		<p class='left-side' style='display: none' data-key='13'>
+			The issue with notating the harmonic series is that the frequencies of each harmonic don’t map perfectly to one of
+			the 12 notes in Western music notation. For example, if we take our favorite note, A4 at 440 Hertz, it’s first
+			harmonic can be notated because it is exactly an octave away at 880 Hertz, which is A5 (remember: frequency ratio
+			of 2 to 1). The third harmonic, however, is 1320 Hertz, which is somewhere in between E6 and F6.
+		</p>
+		<p class='right-side' style='display: none' data-key='13'>
+			Therefore, if we write out the pitches of the harmonic series, we can notate the frequency variation from the
+			notated pitch by indicating how many cents to go up or down.
+		</p>
+
 
 		<div class='pres' id="pixi-content">
 			<canvas id="pixi-canvas" />

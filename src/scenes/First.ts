@@ -12,8 +12,9 @@ export class First extends Scene {
 
     this.title = new Text("Parts of a Wave", Scene.getTextStyle());
     this.addChild(this.title);
-    this.title.x = Manager.width / 2 - this.title.width / 2;
-    this.title.y = Manager.height / 10;
+    this.title.anchor.set(0.5);
+    this.title.x = Manager.width / 2;
+    this.title.y = 50;
 
     this.soundWave = Sprite.from("sound wave");
 

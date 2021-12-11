@@ -22,7 +22,7 @@ export class LoaderScene extends Scene {
     this.title.y = Manager.height / 10;
 
     // lets make a loader graphic:
-    const loaderBarWidth = Manager.width * 0.8; // just an auxiliar variable
+    const loaderBarWidth = Manager.width / 3; // just an auxiliar variable
     // the fill of the bar.
     this.loaderBarFill = new Graphics();
     this.loaderBarFill.beginFill(0x5a829b, 1);
