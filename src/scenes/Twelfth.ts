@@ -1,6 +1,7 @@
 import { Scene } from "./Scene";
 import { Sprite, Text } from "pixi.js";
 import { Manager } from "../Manager";
+import { Thirteenth } from "./Thirteenth";
 
 export class Twelfth extends Scene {
   private title: Text;
@@ -25,6 +26,6 @@ export class Twelfth extends Scene {
   }
 
   override nextScreen() {
-    //Manager.changeScene(new FrequencyBasics());
+    Manager.changeScene(new Thirteenth());
   }
 }

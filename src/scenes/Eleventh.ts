@@ -18,7 +18,7 @@ export class Eleventh extends Scene {
   constructor() {
     super();
 
-    this.title = new Text("Harmonic Notation", Scene.getTextStyle());
+    this.title = new Text("Harmonic Examples", Scene.getTextStyle());
     this.addChild(this.title);
     this.title.anchor.set(0.5);
     this.title.x = Manager.width / 2;

@@ -1,10 +1,9 @@
 import { Scene } from "./Scene";
-import { sound } from "@pixi/sound";
-import { Sprite, Ticker, Text } from "pixi.js";
+import { Sprite, Text, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
-import { First } from "./First";
+import { sound } from "@pixi/sound";
 
-export class Intro extends Scene {
+export class Fourteenth extends Scene {
   private title: Text;
   private flower1: Sprite;
   private flower2: Sprite;
@@ -12,12 +11,12 @@ export class Intro extends Scene {
   private flower4: Sprite;
   private flower5: Sprite;
   private flower6: Sprite;
-  private alphaChange: number = 0.01;
+  private alphaChange: number = 0.001;
 
   constructor() {
     super();
 
-    this.title = new Text("Harmonic Presence", Scene.getTextStyle());
+    this.title = new Text("Harmonic Beauty", Scene.getTextStyle());
     this.addChild(this.title);
     this.title.x = Manager.width / 2 - this.title.width / 2;
     this.title.y = Manager.height / 10;
@@ -108,7 +107,6 @@ export class Intro extends Scene {
   };
 
   override nextScreen() {
-    sound.pause("intro-music");
-    Manager.changeScene(new First());
+    //Manager.changeScene(new FrequencyBasics());
   }
 }

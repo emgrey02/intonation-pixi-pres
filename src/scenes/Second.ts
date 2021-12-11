@@ -1,6 +1,6 @@
 import { Scene } from "./Scene";
 import { sound } from "@pixi/sound";
-import { Sprite, Text } from "pixi.js";
+import { Sprite, Text, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Third } from "./Third";
 
@@ -8,6 +8,7 @@ export class Second extends Scene {
   private title: Text;
   private highFreq: Sprite;
   private lowFreq: Sprite;
+  private change: number = 4;
 
   constructor() {
     super();
@@ -22,7 +23,7 @@ export class Second extends Scene {
     this.lowFreq = Sprite.from("low wave");
 
     this.lowFreq.anchor.set(0.5);
-    this.lowFreq.x = Manager.width / 2;
+    this.lowFreq.x = Manager.width;
     this.lowFreq.y = Manager.height / 2 + 50;
     this.lowFreq.scale.set(0.8);
     this.lowFreq.interactive = true;
@@ -47,7 +48,7 @@ export class Second extends Scene {
     });
 
     this.highFreq.anchor.set(0.5);
-    this.highFreq.x = Manager.width / 2;
+    this.highFreq.x = 0;
     this.highFreq.y = Manager.height / 3;
     this.highFreq.scale.set(0.8);
 
@@ -72,7 +73,23 @@ export class Second extends Scene {
 
     this.addChild(this.highFreq);
     this.addChild(this.lowFreq);
+
+    let ticker: Ticker = Ticker.shared;
+    ticker.add(this.update, this);
+    ticker.start();
   }
+
+  private update = (deltaTime: number): void => {
+    this.highFreq.x = this.highFreq.x + this.change * deltaTime;
+    if (this.highFreq.x >= Manager.width / 2) {
+      this.highFreq.x = Manager.width / 2;
+    }
+
+    this.lowFreq.x = this.lowFreq.x - this.change * deltaTime;
+    if (this.lowFreq.x <= Manager.width / 2) {
+      this.lowFreq.x = Manager.width / 2;
+    }
+  };
 
   override nextScreen() {
     Manager.changeScene(new Third());
