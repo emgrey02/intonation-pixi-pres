@@ -2,6 +2,7 @@ import { Scene } from "./Scene";
 import { Sprite, Text, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { sound } from "@pixi/sound";
+import { Credits } from "./Credits";
 
 export class Fourteenth extends Scene {
   private title: Text;
@@ -107,6 +108,6 @@ export class Fourteenth extends Scene {
   };
 
   override nextScreen() {
-    return;
+    Manager.changeScene(new Credits());
   }
 }

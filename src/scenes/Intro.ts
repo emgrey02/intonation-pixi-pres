@@ -6,6 +6,7 @@ import { First } from "./First";
 
 export class Intro extends Scene {
   private title: Text;
+  private author: Text;
   private flower1: Sprite;
   private flower2: Sprite;
   private flower3: Sprite;
@@ -19,8 +20,15 @@ export class Intro extends Scene {
 
     this.title = new Text("Harmonic Presence", Scene.getTextStyle());
     this.addChild(this.title);
-    this.title.x = Manager.width / 2 - this.title.width / 2;
+    this.title.anchor.set(0.5);
+    this.title.x = Manager.width / 2;
     this.title.y = Manager.height / 10;
+
+    this.author = new Text("by Emma Grey", Scene.getTextStyle());
+    this.addChild(this.author);
+    this.author.anchor.set(0.5);
+    this.author.x = Manager.width / 2;
+    this.author.y = Manager.height - Manager.height / 4;
 
     this.flower1 = Sprite.from("flower1");
     this.flower2 = Sprite.from("flower2");
