@@ -49,7 +49,7 @@ export class Sixth extends Scene {
     });
     this.piano.on("pointerdown", () => {
       this.piano.scale.set(0.55);
-      sound.volume("piano-sound", 0.3);
+      sound.volume("piano-sound", 0.1);
       sound.play("piano-sound");
       setTimeout(() => sound.pause("piano-sound"), 2000);
     });
@@ -79,7 +79,7 @@ export class Sixth extends Scene {
     });
     this.robot.on("pointerdown", () => {
       this.robot.scale.set(0.45);
-      sound.volume("sine-wave", 0.2);
+      sound.volume("sine-wave", 0.1);
       sound.play("sine-wave");
       setTimeout(() => sound.pause("sine-wave"), 2000);
     });

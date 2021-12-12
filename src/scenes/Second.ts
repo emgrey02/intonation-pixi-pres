@@ -39,7 +39,7 @@ export class Second extends Scene {
     });
     this.lowFreq.on("pointerdown", () => {
       this.lowFreq.scale.set(0.75);
-      sound.volume("low sound", 0.5);
+      sound.volume("low sound", 0.2);
       sound.play("low sound");
       setTimeout(() => sound.pause("low sound"), 2000);
     });

@@ -43,7 +43,7 @@ export class Fourth extends Scene {
     });
     this.first.on("pointerdown", () => {
       this.first.scale.set(0.95);
-      sound.volume("400 hz", 0.2);
+      sound.volume("400 hz", 0.1);
       sound.play("400 hz");
       setTimeout(() => sound.pause("400 hz"), 2000);
     });
@@ -67,7 +67,7 @@ export class Fourth extends Scene {
     });
     this.second.on("pointerdown", () => {
       this.second.scale.set(0.95);
-      sound.volume("450 hz", 0.2);
+      sound.volume("450 hz", 0.1);
       sound.play("450 hz");
       setTimeout(() => sound.pause("450 hz"), 2000);
     });
@@ -91,7 +91,7 @@ export class Fourth extends Scene {
     });
     this.third.on("pointerdown", () => {
       this.third.scale.set(0.95);
-      sound.volume("1000 hz", 0.1);
+      sound.volume("1000 hz", 0.05);
       sound.play("1000 hz");
       setTimeout(() => sound.pause("1000 hz"), 2000);
     });
@@ -117,7 +117,7 @@ export class Fourth extends Scene {
     });
     this.fourth.on("pointerdown", () => {
       this.fourth.scale.set(0.95);
-      sound.volume("1050 hz", 0.1);
+      sound.volume("1050 hz", 0.05);
       sound.play("1050 hz");
       setTimeout(() => sound.pause("1050 hz"), 2000);
     });
