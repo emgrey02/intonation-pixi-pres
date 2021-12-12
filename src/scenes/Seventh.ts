@@ -14,12 +14,12 @@ export class Seventh extends Scene {
   constructor(title: string) {
     super(title);
 
-    this.firstCap = new Text("composite piano wave");
+    (this.firstCap = new Text("composite piano wave")), Scene.getParaStyle();
     this.firstCap.anchor.set(0.5);
     this.firstCap.x = 0;
     this.firstCap.y = Manager.height - Manager.height / 3;
 
-    this.secondCap = new Text("decomposed piano wave");
+    this.secondCap = new Text("decomposed piano wave", Scene.getParaStyle());
     this.secondCap.anchor.set(0.5);
     this.secondCap.x = Manager.width;
     this.secondCap.y = Manager.height - Manager.height / 3;

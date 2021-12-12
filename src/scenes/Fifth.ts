@@ -5,7 +5,6 @@ import { Sixth } from "./Sixth";
 
 export class Fifth extends Scene {
   private chromScale: Sprite;
-  private pianoNotes: Sprite;
   private noteFreqs: Sprite;
   private change: number = 10;
 
@@ -13,23 +12,17 @@ export class Fifth extends Scene {
     super(title);
 
     this.chromScale = Sprite.from("chrom scale");
-    this.pianoNotes = Sprite.from("piano keys");
     this.noteFreqs = Sprite.from("note freqs");
 
     this.chromScale.anchor.set(0.5);
     this.chromScale.x = 0;
-    this.chromScale.y = Manager.height / 2 + 50;
+    this.chromScale.y = Manager.height / 3;
     this.chromScale.scale.set(0.8);
-
-    this.pianoNotes.anchor.set(0.5);
-    this.pianoNotes.x = 0;
-    this.pianoNotes.y = Manager.height / 3;
 
     this.noteFreqs.anchor.set(0.5);
     this.noteFreqs.x = Manager.width;
-    this.noteFreqs.y = Manager.height / 2;
+    this.noteFreqs.y = Manager.height - Manager.height / 3;
 
-    this.addChild(this.pianoNotes);
     this.addChild(this.chromScale);
     this.addChild(this.noteFreqs);
 
@@ -40,16 +33,14 @@ export class Fifth extends Scene {
 
   private update = (deltaTime: number): void => {
     this.chromScale.x = this.chromScale.x + this.change * deltaTime;
-    this.pianoNotes.x = this.pianoNotes.x + this.change * deltaTime;
-    if (this.chromScale.x >= Manager.width / 3) {
-      this.chromScale.x = Manager.width / 3;
-      this.pianoNotes.x = Manager.width / 3;
+    if (this.chromScale.x >= Manager.width / 2) {
+      this.chromScale.x = Manager.width / 2;
     }
 
     this.noteFreqs.x = this.noteFreqs.x - this.change * deltaTime;
 
-    if (this.noteFreqs.x <= Manager.width - Manager.width / 3) {
-      this.noteFreqs.x = Manager.width - Manager.width / 3;
+    if (this.noteFreqs.x <= Manager.width / 2) {
+      this.noteFreqs.x = Manager.width / 2;
     }
   };
 

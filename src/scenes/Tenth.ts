@@ -31,6 +31,7 @@ export class Tenth extends Scene {
     });
     this.harmonicSeries.on("pointerdown", () => {
       this.harmonicSeries.scale.set(0.45);
+      sound.stop("first 32");
       sound.volume("first 32", 0.3);
       sound.play("first 32");
     });

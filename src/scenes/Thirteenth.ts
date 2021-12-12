@@ -1,5 +1,5 @@
 import { Scene } from "./Scene";
-import { Sprite } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Fourteenth } from "./Fourteenth";
 import { sound } from "@pixi/sound";
@@ -7,11 +7,13 @@ import { sound } from "@pixi/sound";
 export class Thirteenth extends Scene {
   private snare: Sprite;
   private drumstick: Sprite;
+  private alphaChange: number = 0.01;
 
   constructor(title: string) {
     super(title);
 
     this.snare = Sprite.from("snare");
+    this.snare.alpha = 0;
     this.snare.anchor.set(0.5);
     this.snare.scale.set(0.5);
     this.snare.x = Manager.width / 2;
@@ -47,7 +49,18 @@ export class Thirteenth extends Scene {
 
     this.interactive = true;
     this.on("pointermove", this.moveDrumstick);
+
+    let ticker: Ticker = Ticker.shared;
+    ticker.add(this.update, this);
+    ticker.start();
   }
+
+  private update = (deltaTime: number): void => {
+    this.snare.alpha = this.snare.alpha + this.alphaChange * deltaTime;
+    if (this.snare.alpha >= 1) {
+      this.snare.alpha = 1;
+    }
+  };
 
   private moveDrumstick(e: MessageEvent) {
     let pos = e.data.global;

@@ -2,7 +2,8 @@ import { Container, TextStyle, Text } from "pixi.js";
 import { Manager } from "../Manager";
 
 export class Scene extends Container {
-  private static textStyle: TextStyle;
+  private static titleStyle: TextStyle;
+  private static paraStyle: TextStyle;
   private title: Text;
   private nextButton: HTMLButtonElement | null;
   private backButton: HTMLButtonElement | null;
@@ -10,13 +11,22 @@ export class Scene extends Container {
   constructor(title: string) {
     super();
 
-    Scene.textStyle = new TextStyle({
+    Scene.titleStyle = new TextStyle({
       fill: "#000000",
       fontFamily: "Secular One",
       fontSize: 52,
       lineJoin: "round",
       miterLimit: 0,
       padding: 15,
+    });
+
+    Scene.paraStyle = new TextStyle({
+      fill: "#000000",
+      fontFamily: "Mukta",
+      fontSize: 24,
+      lineJoin: "round",
+      miterLimit: 0,
+      padding: 10,
     });
 
     this.title = new Text(title, Scene.getTextStyle());
@@ -33,7 +43,11 @@ export class Scene extends Container {
   }
 
   static getTextStyle() {
-    return this.textStyle;
+    return this.titleStyle;
+  }
+
+  static getParaStyle() {
+    return this.paraStyle;
   }
 
   nextScreen() {

@@ -6,6 +6,7 @@ import { First } from "./First";
 
 export class Intro extends Scene {
   private author: Text;
+  private headphones: Text;
   private flower1: Sprite;
   private flower2: Sprite;
   private flower3: Sprite;
@@ -22,6 +23,15 @@ export class Intro extends Scene {
     this.author.anchor.set(0.5);
     this.author.x = Manager.width / 2;
     this.author.y = Manager.height - Manager.height / 4;
+
+    this.headphones = new Text(
+      "please use headphones for optimal listening experience",
+      Scene.getParaStyle()
+    );
+    this.addChild(this.headphones);
+    this.headphones.anchor.set(0.5);
+    this.headphones.x = Manager.width / 2;
+    this.headphones.y = Manager.height - Manager.height / 3;
 
     this.flower1 = Sprite.from("flower1");
     this.flower2 = Sprite.from("flower2");

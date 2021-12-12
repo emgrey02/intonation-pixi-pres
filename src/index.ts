@@ -7,4 +7,4 @@ window.addEventListener("resize", () => {
   setTimeout((window.location.href = window.location.href), 3000);
 });
 
-Manager.changeScene(new LoaderScene());
+Manager.changeScene(new LoaderScene("loading..."));
