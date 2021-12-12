@@ -1,11 +1,10 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { sound } from "@pixi/sound";
 import { Credits } from "./Credits";
 
 export class Fourteenth extends Scene {
-  private title: Text;
   private flower1: Sprite;
   private flower2: Sprite;
   private flower3: Sprite;
@@ -14,13 +13,8 @@ export class Fourteenth extends Scene {
   private flower6: Sprite;
   private alphaChange: number = 0.005;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Harmonic Beauty", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.x = Manager.width / 2 - this.title.width / 2;
-    this.title.y = Manager.height / 10;
+  constructor(title: string) {
+    super(title);
 
     this.flower1 = Sprite.from("flower1");
     this.flower2 = Sprite.from("flower2");
@@ -108,6 +102,6 @@ export class Fourteenth extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Credits());
+    Manager.changeScene(new Credits("Work Cited"));
   }
 }

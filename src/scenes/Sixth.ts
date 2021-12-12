@@ -1,25 +1,18 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { sound } from "@pixi/sound";
 import { Seventh } from "./Seventh";
 
 export class Sixth extends Scene {
-  private title: Text;
   private robot: Sprite;
   private piano: Sprite;
   private robotWave: Sprite;
   private pianoWave: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Composite Sound", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.robot = Sprite.from("robot");
     this.piano = Sprite.from("piano");
@@ -114,6 +107,6 @@ export class Sixth extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Seventh());
+    Manager.changeScene(new Seventh("Fundamental Frequency"));
   }
 }

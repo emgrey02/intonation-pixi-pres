@@ -1,22 +1,15 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Eleventh } from "./Eleventh";
 import { sound } from "@pixi/sound";
 
 export class Tenth extends Scene {
-  private title: Text;
   private harmonicSeries: Sprite;
   private alphaChange: number = 0.005;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Harmonic Series", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.harmonicSeries = Sprite.from("harm series");
     this.harmonicSeries.anchor.set(0.5);
@@ -62,6 +55,6 @@ export class Tenth extends Scene {
 
   override nextScreen() {
     sound.stop("first 32");
-    Manager.changeScene(new Eleventh());
+    Manager.changeScene(new Eleventh("Harmonic Examples"));
   }
 }

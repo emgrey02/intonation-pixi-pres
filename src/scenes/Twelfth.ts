@@ -1,21 +1,14 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Thirteenth } from "./Thirteenth";
 
 export class Twelfth extends Scene {
-  private title: Text;
   private pic32: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Harmonic Notation", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.pic32 = Sprite.from("first 16 harms");
     this.pic32.anchor.set(0.5);
@@ -38,6 +31,6 @@ export class Twelfth extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Thirteenth());
+    Manager.changeScene(new Thirteenth("Harmonic Series in Reality"));
   }
 }

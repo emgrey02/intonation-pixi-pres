@@ -1,11 +1,13 @@
-import { Container, TextStyle } from "pixi.js";
+import { Container, TextStyle, Text } from "pixi.js";
+import { Manager } from "../Manager";
 
 export class Scene extends Container {
   private static textStyle: TextStyle;
+  private title: Text;
   private nextButton: HTMLButtonElement | null;
   private backButton: HTMLButtonElement | null;
 
-  constructor() {
+  constructor(title: string) {
     super();
 
     Scene.textStyle = new TextStyle({
@@ -16,6 +18,12 @@ export class Scene extends Container {
       miterLimit: 0,
       padding: 15,
     });
+
+    this.title = new Text(title, Scene.getTextStyle());
+    this.addChild(this.title);
+    this.title.anchor.set(0.5);
+    this.title.x = Manager.width / 2;
+    this.title.y = Manager.height / 12;
 
     this.nextButton = document.querySelector("#next");
     this.backButton = document.querySelector("#back");

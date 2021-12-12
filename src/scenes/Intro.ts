@@ -5,7 +5,6 @@ import { Manager } from "../Manager";
 import { First } from "./First";
 
 export class Intro extends Scene {
-  private title: Text;
   private author: Text;
   private flower1: Sprite;
   private flower2: Sprite;
@@ -15,14 +14,8 @@ export class Intro extends Scene {
   private flower6: Sprite;
   private alphaChange: number = 0.005;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Harmonic Presence", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 10;
+  constructor(title: string) {
+    super(title);
 
     this.author = new Text("by Emma Grey", Scene.getTextStyle());
     this.addChild(this.author);
@@ -117,6 +110,6 @@ export class Intro extends Scene {
 
   override nextScreen() {
     sound.pause("intro-music");
-    Manager.changeScene(new First());
+    Manager.changeScene(new First("Parts of a Wave"));
   }
 }

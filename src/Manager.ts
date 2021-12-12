@@ -1,3 +1,5 @@
+//code taken and adapted from PixiJS Elementals https://www.pixijselementals.com/#recipe-scene-manager
+
 import { Application } from "pixi.js";
 import { Scene } from "./scenes/Scene";
 

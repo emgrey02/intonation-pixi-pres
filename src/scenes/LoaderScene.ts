@@ -1,4 +1,6 @@
-import { Container, Graphics, Loader, Text } from "pixi.js";
+//code taken and adapted from PixiJS Elementals https://www.pixijselementals.com/#recipe-preloading-assets
+
+import { Container, Graphics, Loader } from "pixi.js";
 import { assets } from "../assets";
 import { Manager } from "../Manager";
 import { Scene } from "./Scene";
@@ -11,15 +13,9 @@ export class LoaderScene extends Scene {
   private loaderBar: Container;
   private loaderBarBorder: Graphics;
   private loaderBarFill: Graphics;
-  private title: Text;
 
-  constructor() {
-    super();
-
-    this.title = new Text("loading...", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.x = Manager.width / 2 - this.title.width / 2;
-    this.title.y = Manager.height / 10;
+  constructor(title: string) {
+    super(title);
 
     // lets make a loader graphic:
     const loaderBarWidth = Manager.width / 3; // just an auxiliar variable
@@ -72,7 +68,7 @@ export class LoaderScene extends Scene {
 
     // all your assets are ready! I would probably change to another scene
 
-    Manager.changeScene(new Intro());
+    Manager.changeScene(new Intro("Harmonic Presence"));
     // ...but you could build your entire game here if you want
     // (pls don't)
   }

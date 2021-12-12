@@ -1,22 +1,15 @@
 import { Scene } from "./Scene";
-import { Sprite, Text } from "pixi.js";
+import { Sprite } from "pixi.js";
 import { Manager } from "../Manager";
 import { Fourteenth } from "./Fourteenth";
 import { sound } from "@pixi/sound";
 
 export class Thirteenth extends Scene {
-  private title: Text;
   private snare: Sprite;
   private drumstick: Sprite;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Harmonic Series in Reality", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.snare = Sprite.from("snare");
     this.snare.anchor.set(0.5);
@@ -64,6 +57,6 @@ export class Thirteenth extends Scene {
   }
 
   override nextScreen() {
-    Manager.changeScene(new Fourteenth());
+    Manager.changeScene(new Fourteenth("Harmonic Beauty"));
   }
 }

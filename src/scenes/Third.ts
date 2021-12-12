@@ -1,21 +1,14 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Fourth } from "./Fourth";
 
 export class Third extends Scene {
-  private title: Text;
   private graph: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Frequency-Pitch Relationship", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.graph = Sprite.from("graph");
 
@@ -39,6 +32,6 @@ export class Third extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Fourth());
+    Manager.changeScene(new Fourth("Frequency vs. Pitch"));
   }
 }

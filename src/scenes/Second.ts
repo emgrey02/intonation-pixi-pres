@@ -1,23 +1,16 @@
 import { Scene } from "./Scene";
 import { sound } from "@pixi/sound";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Third } from "./Third";
 
 export class Second extends Scene {
-  private title: Text;
   private highFreq: Sprite;
   private lowFreq: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Pitch", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.highFreq = Sprite.from("high wave");
     this.lowFreq = Sprite.from("low wave");
@@ -92,6 +85,6 @@ export class Second extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Third());
+    Manager.changeScene(new Third("Frequency-Pitch Relationship"));
   }
 }

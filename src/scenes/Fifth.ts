@@ -1,23 +1,16 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Sixth } from "./Sixth";
 
 export class Fifth extends Scene {
-  private title: Text;
   private chromScale: Sprite;
   private pianoNotes: Sprite;
   private noteFreqs: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Notation", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.chromScale = Sprite.from("chrom scale");
     this.pianoNotes = Sprite.from("piano keys");
@@ -61,6 +54,6 @@ export class Fifth extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Sixth());
+    Manager.changeScene(new Sixth("Composite Sound"));
   }
 }

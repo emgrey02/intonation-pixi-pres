@@ -1,11 +1,10 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Twelfth } from "./Twelfth";
 import { sound } from "@pixi/sound";
 
 export class Eleventh extends Scene {
-  private title: Text;
   private oboe: Sprite;
   private oboeVols: Sprite;
   private clarinet: Sprite;
@@ -16,14 +15,8 @@ export class Eleventh extends Scene {
   private pianoVols: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Harmonic Examples", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.oboe = Sprite.from("oboe");
     this.oboe.anchor.set(0.5);
@@ -205,6 +198,6 @@ export class Eleventh extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Twelfth());
+    Manager.changeScene(new Twelfth("Harmonic Notation"));
   }
 }

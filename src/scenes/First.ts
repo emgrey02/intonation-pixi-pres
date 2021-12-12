@@ -1,21 +1,14 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Second } from "./Second";
 
 export class First extends Scene {
-  private title: Text;
   private soundWave: Sprite;
   private alphaChange: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Parts of a Wave", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.width / 12;
+  constructor(title: string) {
+    super(title);
 
     this.soundWave = Sprite.from("sound wave");
 
@@ -38,6 +31,6 @@ export class First extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Second());
+    Manager.changeScene(new Second("Pitch"));
   }
 }

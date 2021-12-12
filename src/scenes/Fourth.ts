@@ -1,25 +1,18 @@
 import { Scene } from "./Scene";
-import { Sprite, Text, Ticker } from "pixi.js";
+import { Sprite, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Fifth } from "./Fifth";
 import { sound } from "@pixi/sound";
 
 export class Fourth extends Scene {
-  private title: Text;
   private first: Sprite;
   private second: Sprite;
   private third: Sprite;
   private fourth: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Frequency vs. Pitch", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.first = Sprite.from("400 circ");
     this.second = Sprite.from("450 circ");
@@ -152,6 +145,6 @@ export class Fourth extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Fifth());
+    Manager.changeScene(new Fifth("Notation"));
   }
 }

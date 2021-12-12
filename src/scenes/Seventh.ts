@@ -5,21 +5,14 @@ import { Eighth } from "./Eighth";
 // import { sound } from "@pixi/sound";
 
 export class Seventh extends Scene {
-  private title: Text;
   private firstCap: Text;
   private secondCap: Text;
   private fundFreq: Sprite;
   private pianoWave: Sprite;
   private change: number = 10;
 
-  constructor() {
-    super();
-
-    this.title = new Text("Fundamental Frequency", Scene.getTextStyle());
-    this.addChild(this.title);
-    this.title.anchor.set(0.5);
-    this.title.x = Manager.width / 2;
-    this.title.y = Manager.height / 12;
+  constructor(title: string) {
+    super(title);
 
     this.firstCap = new Text("composite piano wave");
     this.firstCap.anchor.set(0.5);
@@ -72,6 +65,6 @@ export class Seventh extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Eighth());
+    Manager.changeScene(new Eighth("Intro to Harmonics"));
   }
 }
