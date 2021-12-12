@@ -1,5 +1,5 @@
 import { Scene } from "./Scene";
-import { Sprite, Text } from "pixi.js";
+import { Sprite, Text, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { Fifth } from "./Fifth";
 import { sound } from "@pixi/sound";
@@ -10,6 +10,7 @@ export class Fourth extends Scene {
   private second: Sprite;
   private third: Sprite;
   private fourth: Sprite;
+  private change: number = 10;
 
   constructor() {
     super();
@@ -18,7 +19,7 @@ export class Fourth extends Scene {
     this.addChild(this.title);
     this.title.anchor.set(0.5);
     this.title.x = Manager.width / 2;
-    this.title.y = 50;
+    this.title.y = Manager.height / 12;
 
     this.first = Sprite.from("400 circ");
     this.second = Sprite.from("450 circ");
@@ -26,8 +27,8 @@ export class Fourth extends Scene {
     this.fourth = Sprite.from("1050 circ");
 
     this.first.anchor.set(0.5);
-    this.first.x = Manager.width / 3;
-    this.first.y = Manager.height / 4;
+    this.first.x = 0;
+    this.first.y = Manager.height / 3;
     this.first.scale.set(1);
 
     this.first.interactive = true;
@@ -51,7 +52,7 @@ export class Fourth extends Scene {
     });
 
     this.second.anchor.set(0.5);
-    this.second.x = Manager.width / 3;
+    this.second.x = 0;
     this.second.y = Manager.height / 2;
     this.second.scale.set(1);
 
@@ -75,8 +76,8 @@ export class Fourth extends Scene {
     });
 
     this.third.anchor.set(0.5);
-    this.third.x = Manager.width - Manager.width / 3;
-    this.third.y = Manager.height / 4;
+    this.third.x = Manager.width;
+    this.third.y = Manager.height / 3;
     this.third.scale.set(1);
 
     this.third.interactive = true;
@@ -99,7 +100,7 @@ export class Fourth extends Scene {
     });
 
     this.fourth.anchor.set(0.5);
-    this.fourth.x = Manager.width - Manager.width / 3;
+    this.fourth.x = Manager.width;
     this.fourth.y = Manager.height / 2;
     this.fourth.scale.set(1);
 
@@ -128,7 +129,27 @@ export class Fourth extends Scene {
     this.addChild(this.second);
     this.addChild(this.third);
     this.addChild(this.fourth);
+
+    let ticker: Ticker = Ticker.shared;
+    ticker.add(this.update, this);
+    ticker.start();
   }
+
+  private update = (deltaTime: number): void => {
+    this.first.x = this.first.x + this.change * deltaTime;
+    this.second.x = this.second.x + this.change * deltaTime;
+    if (this.first.x >= Manager.width / 3) {
+      this.first.x = Manager.width / 3;
+      this.second.x = Manager.width / 3;
+    }
+
+    this.third.x = this.third.x - this.change * deltaTime;
+    this.fourth.x = this.fourth.x - this.change * deltaTime;
+    if (this.third.x <= Manager.width - Manager.width / 3) {
+      this.third.x = Manager.width - Manager.width / 3;
+      this.fourth.x = Manager.width - Manager.width / 3;
+    }
+  };
 
   override nextScreen() {
     Manager.changeScene(new Fifth());

@@ -11,7 +11,7 @@ export class Fourteenth extends Scene {
   private flower4: Sprite;
   private flower5: Sprite;
   private flower6: Sprite;
-  private alphaChange: number = 0.001;
+  private alphaChange: number = 0.005;
 
   constructor() {
     super();
@@ -107,6 +107,6 @@ export class Fourteenth extends Scene {
   };
 
   override nextScreen() {
-    //Manager.changeScene(new FrequencyBasics());
+    return;
   }
 }

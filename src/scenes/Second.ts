@@ -8,7 +8,7 @@ export class Second extends Scene {
   private title: Text;
   private highFreq: Sprite;
   private lowFreq: Sprite;
-  private change: number = 4;
+  private change: number = 10;
 
   constructor() {
     super();
@@ -17,7 +17,7 @@ export class Second extends Scene {
     this.addChild(this.title);
     this.title.anchor.set(0.5);
     this.title.x = Manager.width / 2;
-    this.title.y = 50;
+    this.title.y = Manager.height / 12;
 
     this.highFreq = Sprite.from("high wave");
     this.lowFreq = Sprite.from("low wave");
@@ -39,7 +39,7 @@ export class Second extends Scene {
     });
     this.lowFreq.on("pointerdown", () => {
       this.lowFreq.scale.set(0.75);
-      sound.volume("low sound", 0.8);
+      sound.volume("low sound", 0.5);
       sound.play("low sound");
       setTimeout(() => sound.pause("low sound"), 2000);
     });

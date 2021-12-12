@@ -1,5 +1,5 @@
 import { Scene } from "./Scene";
-import { Sprite, Text } from "pixi.js";
+import { Sprite, Text, Ticker } from "pixi.js";
 import { Manager } from "../Manager";
 import { sound } from "@pixi/sound";
 import { Seventh } from "./Seventh";
@@ -10,6 +10,7 @@ export class Sixth extends Scene {
   private piano: Sprite;
   private robotWave: Sprite;
   private pianoWave: Sprite;
+  private change: number = 10;
 
   constructor() {
     super();
@@ -18,7 +19,7 @@ export class Sixth extends Scene {
     this.addChild(this.title);
     this.title.anchor.set(0.5);
     this.title.x = Manager.width / 2;
-    this.title.y = 50;
+    this.title.y = Manager.height / 12;
 
     this.robot = Sprite.from("robot");
     this.piano = Sprite.from("piano");
@@ -26,12 +27,12 @@ export class Sixth extends Scene {
     this.pianoWave = Sprite.from("piano wave");
 
     this.piano.anchor.set(0.5);
-    this.piano.x = Manager.width - Manager.width / 3;
+    this.piano.x = Manager.width;
     this.piano.y = Manager.height / 2;
     this.piano.scale.set(0.6);
 
     this.pianoWave.anchor.set(0.5);
-    this.pianoWave.x = Manager.width - Manager.width / 3;
+    this.pianoWave.x = Manager.width;
     this.pianoWave.y = Manager.height / 4;
     this.pianoWave.scale.set(0.5);
 
@@ -57,12 +58,12 @@ export class Sixth extends Scene {
     });
 
     this.robot.anchor.set(0.5);
-    this.robot.x = Manager.width / 3;
+    this.robot.x = 0;
     this.robot.y = Manager.height / 2;
     this.robot.scale.set(0.5);
 
     this.robotWave.anchor.set(0.5);
-    this.robotWave.x = Manager.width / 3;
+    this.robotWave.x = 0;
     this.robotWave.y = Manager.height / 4;
     this.robotWave.scale.set(0.5);
 
@@ -90,7 +91,27 @@ export class Sixth extends Scene {
     this.addChild(this.piano);
     this.addChild(this.robotWave);
     this.addChild(this.pianoWave);
+
+    let ticker: Ticker = Ticker.shared;
+    ticker.add(this.update, this);
+    ticker.start();
   }
+
+  private update = (deltaTime: number): void => {
+    this.robot.x = this.robot.x + this.change * deltaTime;
+    this.robotWave.x = this.robotWave.x + this.change * deltaTime;
+    if (this.robot.x >= Manager.width / 3) {
+      this.robot.x = Manager.width / 3;
+      this.robotWave.x = Manager.width / 3;
+    }
+
+    this.piano.x = this.piano.x - this.change * deltaTime;
+    this.pianoWave.x = this.pianoWave.x - this.change * deltaTime;
+    if (this.piano.x <= Manager.width - Manager.width / 3) {
+      this.piano.x = Manager.width - Manager.width / 3;
+      this.pianoWave.x = Manager.width - Manager.width / 3;
+    }
+  };
 
   override nextScreen() {
     Manager.changeScene(new Seventh());

@@ -49,6 +49,7 @@ export const assets = [
   { name: "flower4", url: "images/flower4.png" },
   { name: "flower5", url: "images/flower5.png" },
   { name: "flower6", url: "images/flower6.png" },
+  { name: "drumstick", url: "images/drumstick.svg" },
   {
     name: "Secular One",
     url: "https://fonts.googleapis.com/css2?family=Secular+One",

@@ -6,7 +6,7 @@ import { Second } from "./Second";
 export class First extends Scene {
   private title: Text;
   private soundWave: Sprite;
-  private alphaChange: number = 4;
+  private alphaChange: number = 10;
 
   constructor() {
     super();
@@ -15,7 +15,7 @@ export class First extends Scene {
     this.addChild(this.title);
     this.title.anchor.set(0.5);
     this.title.x = Manager.width / 2;
-    this.title.y = 50;
+    this.title.y = Manager.width / 12;
 
     this.soundWave = Sprite.from("sound wave");
 
