@@ -1,7 +1,7 @@
 //code taken and adapted from PixiJS Elementals https://www.pixijselementals.com/#recipe-scene-manager
 
-import { Application } from "pixi.js";
-import { Scene } from "./scenes/Scene";
+import { Application } from 'pixi.js';
+import { Scene } from './scenes/Scene';
 
 export class Manager {
   private constructor() {
@@ -36,15 +36,15 @@ export class Manager {
 
     // Create our pixi app
     Manager.app = new Application({
-      view: document.getElementById("pixi-canvas") as HTMLCanvasElement,
+      view: document.getElementById('pixi-canvas') as HTMLCanvasElement,
       resolution: window.devicePixelRatio || 1,
       autoDensity: true,
       backgroundColor: background,
       width: width,
       height: height,
     });
-    Manager.app.renderer.view.style.position = "absolute";
-    Manager.app.renderer.view.style.display = "block";
+    Manager.app.renderer.view.style.position = 'absolute';
+    Manager.app.renderer.view.style.display = 'block';
     Manager.app.resizeTo = window;
   }
 

@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html lang="en">
 
 <head>
 	<title>Harmonic Presence</title>
@@ -31,6 +31,15 @@
 			justify-content: center;
 		}
 
+		a {
+			text-decoration: none;
+			color: black;
+		}
+
+		a:focus {
+			outline: 5px solid black;
+		}
+
 		.container {
 			max-height: 100vh;
 			align-items: center;
@@ -57,19 +66,6 @@
 			z-index: 0;
 		}
 
-		#next {
-			position: absolute;
-			z-index: 1;
-			right: 5%;
-			bottom: 50px;
-			text-align: right;
-			justify-self: center;
-			align-self: center;
-			font-family: 'Secular One', sans-serif;
-			font-size: 25px;
-			padding: 10px;
-		}
-
 		p {
 			margin: 10px;
 			padding: 20px;
@@ -81,25 +77,31 @@
 			box-shadow: -1px 1px 5px rgba(0, 0, 0, 0.507);
 		}
 
-		button {
-			display: block;
+		#next {
 			width: 150px;
 			height: 80px;
 			background-color: #ADE0FF;
 			border: none;
 			box-shadow: none;
 			transition: box-shadow 0.3s linear;
-			margin: 0.5em;
 			cursor: pointer;
 			font-size: 1.2em;
+			padding: 0;
+			position: absolute;
+			z-index: 1;
+			right: 5%;
+			bottom: 50px;
+			text-align: right;
+			font-family: 'Secular One', sans-serif;
+			font-size: 25px;
+			padding: 10px;
 		}
 
-		button:hover {
+		#next:hover {
 			box-shadow: 0px 0px 0px 5px #ADE0FF;
 		}
 
-		#next:active,
-		#back:active {
+		#next:active {
 			box-shadow: 0px 0px 0px 5px #5a829b;
 			background-color: #5a829b;
 		}
@@ -324,9 +326,13 @@
 
 
 		<div class='pres' id="pixi-content">
-			<canvas id="pixi-canvas" />
+			<canvas id="pixi-canvas"></canvas>
 		</div>
-		<button id='next'>Next</button>
+
+
+		<a href="#" id='next'>Next</a>
+
+
 	</div>
 </body>
 

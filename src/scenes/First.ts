@@ -1,7 +1,7 @@
-import { Scene } from "./Scene";
-import { Sprite, Ticker } from "pixi.js";
-import { Manager } from "../Manager";
-import { Second } from "./Second";
+import { Scene } from './Scene';
+import { Sprite, Ticker } from 'pixi.js';
+import { Manager } from '../Manager';
+import { Second } from './Second';
 
 export class First extends Scene {
   private soundWave: Sprite;
@@ -10,7 +10,10 @@ export class First extends Scene {
   constructor(title: string) {
     super(title);
 
-    this.soundWave = Sprite.from("sound wave");
+    this.soundWave = Sprite.from('sound wave');
+
+    this.soundWave.accessible = true;
+    this.soundWave.accessibleTitle = 'A sine wave with the wavelength labelled';
 
     this.soundWave.scale.set(1);
     this.soundWave.anchor.set(0.5);
@@ -31,6 +34,6 @@ export class First extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Second("Pitch"));
+    Manager.changeScene(new Second('Pitch'));
   }
 }

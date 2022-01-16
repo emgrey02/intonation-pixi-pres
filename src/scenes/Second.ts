@@ -1,8 +1,8 @@
-import { Scene } from "./Scene";
-import { sound } from "@pixi/sound";
-import { Sprite, Ticker } from "pixi.js";
-import { Manager } from "../Manager";
-import { Third } from "./Third";
+import { Scene } from './Scene';
+import { sound } from '@pixi/sound';
+import { Sprite, Ticker } from 'pixi.js';
+import { Manager } from '../Manager';
+import { Third } from './Third';
 
 export class Second extends Scene {
   private highFreq: Sprite;
@@ -12,32 +12,39 @@ export class Second extends Scene {
   constructor(title: string) {
     super(title);
 
-    this.highFreq = Sprite.from("high wave");
-    this.lowFreq = Sprite.from("low wave");
+    this.highFreq = Sprite.from('high wave');
+    this.lowFreq = Sprite.from('low wave');
 
     this.lowFreq.anchor.set(0.5);
     this.lowFreq.x = Manager.width;
     this.lowFreq.y = Manager.height / 2 + 50;
     this.lowFreq.scale.set(0.8);
     this.lowFreq.interactive = true;
+    this.lowFreq.accessible = true;
+    this.lowFreq.accessibleTitle = 'a sound with a low frequency';
 
-    this.lowFreq.on("pointerover", () => {
+    this.lowFreq.on('pointerover', () => {
       this.lowFreq.tint = 0xade0ff;
-      document.body.style.cursor = "pointer";
+      document.body.style.cursor = 'pointer';
     });
-    this.lowFreq.on("pointerout", () => {
+    this.lowFreq.on('pointerout', () => {
       this.lowFreq.tint = 0xffffff;
 
-      document.body.style.cursor = "default";
+      document.body.style.cursor = 'default';
     });
-    this.lowFreq.on("pointerdown", () => {
+    this.lowFreq.on('pointerdown', () => {
       this.lowFreq.scale.set(0.75);
-      sound.volume("low sound", 0.2);
-      sound.play("low sound");
-      setTimeout(() => sound.pause("low sound"), 2000);
+      sound.volume('low sound', 0.2);
+      sound.play('low sound');
+      setTimeout(() => sound.pause('low sound'), 2000);
     });
-    this.lowFreq.on("pointerup", () => {
+    this.lowFreq.on('pointerup', () => {
       this.lowFreq.scale.set(0.8);
+    });
+    this.lowFreq.on('click', () => {
+      sound.volume('low sound', 0.2);
+      sound.play('low sound');
+      setTimeout(() => sound.pause('low sound'), 2000);
     });
 
     this.highFreq.anchor.set(0.5);
@@ -46,22 +53,29 @@ export class Second extends Scene {
     this.highFreq.scale.set(0.8);
 
     this.highFreq.interactive = true;
-    this.highFreq.on("pointerover", () => {
+    this.highFreq.accessible = true;
+    this.highFreq.accessibleTitle = 'a sound with a high frequency';
+    this.highFreq.on('pointerover', () => {
       this.highFreq.tint = 0xade0ff;
-      document.body.style.cursor = "pointer";
+      document.body.style.cursor = 'pointer';
     });
-    this.highFreq.on("pointerout", () => {
+    this.highFreq.on('pointerout', () => {
       this.highFreq.tint = 0xffffff;
-      document.body.style.cursor = "default";
+      document.body.style.cursor = 'default';
     });
-    this.highFreq.on("pointerdown", () => {
+    this.highFreq.on('pointerdown', () => {
       this.highFreq.scale.set(0.75);
-      sound.volume("high sound", 0.2);
-      sound.play("high sound");
-      setTimeout(() => sound.pause("high sound"), 2000);
+      sound.volume('high sound', 0.2);
+      sound.play('high sound');
+      setTimeout(() => sound.pause('high sound'), 2000);
     });
-    this.highFreq.on("pointerup", () => {
+    this.highFreq.on('pointerup', () => {
       this.highFreq.scale.set(0.8);
+    });
+    this.highFreq.on('click', () => {
+      sound.volume('high sound', 0.2);
+      sound.play('high sound');
+      setTimeout(() => sound.pause('high sound'), 2000);
     });
 
     this.addChild(this.highFreq);
@@ -85,6 +99,6 @@ export class Second extends Scene {
   };
 
   override nextScreen() {
-    Manager.changeScene(new Third("Frequency-Pitch Relationship"));
+    Manager.changeScene(new Third('Frequency-Pitch Relationship'));
   }
 }
